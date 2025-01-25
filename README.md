@@ -1,1 +1,1 @@
-# billsplitter by bhushan nagpure
+# billsplitter
