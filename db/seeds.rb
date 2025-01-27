@@ -10,10 +10,10 @@
 
 
 users = [
-  { first_name: "Bhushan", last_name: "Nagpure", phone: "7040499405", email: "bhushan@gmail.com", password: "Bhushan@123" },
-  { first_name: "Harsh", last_name: "Jagtap", phone: "7043399405", email: "harsh8@gmail.com", password: "Harsh@123" },
-  { first_name: "Sahil", last_name: "Bheke", phone: "7046699405", email: "sahil@gmail.com", password: "Sahil@123" },
-  { first_name: "Krushnal", last_name: "Patil", phone: "7044599405", email: "keushnal@gmail.com", password: "Keushnal@123" }
+  { first_name: "Bhushan", last_name: "Nagpure", phone: "7040499405", email: "bhushan@gmail.com", password: "Bhushan123" },
+  { first_name: "Harsh", last_name: "Jagtap", phone: "7043399405", email: "harsh8@gmail.com", password: "Harsh123" },
+  { first_name: "Sahil", last_name: "Bheke", phone: "7046699405", email: "sahil@gmail.com", password: "Sahil123" },
+  { first_name: "Krushnal", last_name: "Patil", phone: "7044599405", email: "keushnal@gmail.com", password: "Keushnal123" }
 ]
 
 users.each do |user_data|
