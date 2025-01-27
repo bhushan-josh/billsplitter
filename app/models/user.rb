@@ -9,6 +9,6 @@ class User < ApplicationRecord
   # validation
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\z/i }
-  validates :phone_no, presence: true, uniqueness: true, length: { minimum: 10 }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([A-Za-z0-9._]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})\z/ }
+  validates :phone, presence: true, uniqueness: true, format: { with: /\A\d{10}\z/ }
 end
