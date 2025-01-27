@@ -18,6 +18,17 @@
   </head>
 
   <body>
+    <%# ----- add these lines here: ----- %>
+
+    <% if notice %>
+              <%= notice %>
+    <% end %>
+
+    <% if alert %>
+              <%= alert %>
+    <% end %>
+
+    <%# ----- end of added lines ----- %>
     <%= yield %>
   </body>
 </html>
