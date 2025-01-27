@@ -1,0 +1,27 @@
+<h1>User Details</h1>
+
+<table style="border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid black;">First Name</th>
+      <th style="border: 1px solid black;">Last Name</th>
+      <th style="border: 1px solid black;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |person| %>
+      <tr>
+        <td style="border: 1px solid black;"><%= person.first_name %></td>
+        <td style="border: 1px solid black;"><%= person.last_name %></td>
+        <td style="border: 1px solid black;">
+          <%= link_to "Show", person %>
+          <%= link_to "Edit", edit_user_path(person) %>
+          <%= link_to "Delete", person, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "New User", new_user_path %>
