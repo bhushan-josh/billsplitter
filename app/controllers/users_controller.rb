@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: "User was successfully created."
+      flash[:notice] = "Welcome, #{@user.first_name}! You have successfully created an account."  
+      redirect_to @user
     else
       render :new
     end
@@ -42,6 +43,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :phone, :email, :password) # Add other permitted fields as needed
+    params.require(:user).permit(:first_name, :last_name, :phone_no, :email, :password)
   end
 end
