@@ -30,4 +30,6 @@
 en:
   hello: "Hello world"
   test: "This is a test"
-
+  user_create: "Welcome You have successfully created an account"
+  user_update: "User was successfully updated"
+  user_delete: "User was successfully deleted"
