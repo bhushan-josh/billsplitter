@@ -1,0 +1,9 @@
+<h1><%= @users.first_name %> <%= @users.last_name %></h1>
+
+<p><strong>Phone Number:</strong> <%= @users.phone %></p>
+<p><strong>Email Address:</strong> <%= @users.email %></p>
+
+<div>
+  <%= link_to "Edit", edit_user_path(@users), class: "btn btn-edit" %>
+  <%= link_to 'Back to Users List', users_path, class: "btn btn-back" %>
+</div>

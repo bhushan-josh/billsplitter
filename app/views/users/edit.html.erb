@@ -1,0 +1,32 @@
+<%= form_with model: @user, local: true do |form| %>
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+  
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_area :phone %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.text_area :email %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>  
+  </div>
+
+  <div>
+    <%= form.submit "Update User" %>
+  </div>
+
+  <%= link_to 'Back', users_path %>
+<% end %>
