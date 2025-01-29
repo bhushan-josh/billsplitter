@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -10,7 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: "User was successfully created."
+      flash[:notice] = "Welcome, #{@user.first_name}! You have successfully created an account."
+      redirect_to @user
     else
       render :new
     end
@@ -27,7 +30,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user, notice: "User was successfully updated."
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit
     end
@@ -36,12 +39,12 @@ class UsersController < ApplicationController
   def destroy
     @users = User.find(params[:id])
     @users.destroy
-    redirect_to users_url, notice: "User was successfully deleted."
+    redirect_to users_url, notice: 'User was successfully deleted.'
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :phone, :email, :password) # Add other permitted fields as needed
+    params.require(:user).permit(:first_name, :last_name, :phone_no, :email, :password)
   end
 end

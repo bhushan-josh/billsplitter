@@ -1,4 +1,4 @@
-<%= form_with model: @user, local: true do |form| %>
+<%= form_with model: @users, local: true do |form| %>
   <div>
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>
@@ -10,8 +10,8 @@
   </div>
 
   <div>
-    <%= form.label :phone %>
-    <%= form.text_area :phone %>
+    <%= form.label :phone_no %>
+    <%= form.text_area :phone_no %>
   </div>
 
   <div>
