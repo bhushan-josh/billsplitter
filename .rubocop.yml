@@ -1,8 +1,40 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+inherit_from: .rubocop_todo.yml
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "Rakefile"
+    - "config.ru"
+    - "bin/**/*"
+    - "config/*.rb"
+    - "vendor/**/**"
+    - "db/schema.rb"
+    - "app/channels/application_cable/channel.rb"
+    - "app/controllers/application_controller.rb"
+    - "app/jobs/application_job.rb"
+    - "app/mailers/application_mailer.rb"
+    - "app/models/application_record.rb"
+    - "config/environments/development.rb"
+    - "config/environments/production.rb"
+    - "config/environments/test.rb"
+    - "config/initializers/cors.rb"
+    - "config/initializers/inflections.rb"
+    - "db/seeds.rb"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "test/channels/application_cable/connection_test.rb"
+    - "test/test_helper.rb"
+    - "app/channels/application_cable/connection.rb"
+
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - db/**/*
+    - config/environments/**/*
+    - lib/tasks/**/*
+Metrics/ClassLength:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
