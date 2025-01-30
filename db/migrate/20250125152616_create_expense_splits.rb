@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateExpenseSplits < ActiveRecord::Migration[7.2]
   def change
     create_table :expense_splits do |t|

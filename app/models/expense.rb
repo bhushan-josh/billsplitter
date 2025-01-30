@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Expense < ApplicationRecord
   # assosiations
-  belongs_to :payee, class_name: "User"
-  belongs_to :expense_group, class_name: "Group"
+  belongs_to :payee, class_name: 'User'
+  belongs_to :expense_group, class_name: 'Group'
 
   has_many :expensesplits
 

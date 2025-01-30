@@ -1,0 +1,9 @@
+<h1><%= @groups.first_name %> <%= @groups.last_name %></h1>
+
+<p><strong>Phone Number:</strong> <%= @groups.phone %></p>
+<p><strong>Email Address:</strong> <%= @groups.email %></p>
+<div>
+  <%= link_to "Edit", edit_group_path(@groups), class: "btn btn-edit" %>
+  <%= link_to 'Back', groups_path, class: "btn btn-back" %>
+</div>
+

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = t('user_create') #used i18n
+      flash[:notice] = t('user_create') # used i18n
       redirect_to @user
     else
       render :new

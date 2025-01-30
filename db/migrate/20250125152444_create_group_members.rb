@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGroupMembers < ActiveRecord::Migration[7.2]
   def change
     create_table :group_members do |t|

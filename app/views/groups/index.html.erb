@@ -1,1 +1,25 @@
 <h1>Group Details</h1>
+
+<table style="border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid black;">Name</th>
+      <th style="border: 1px solid black;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |person| %>
+      <tr>
+        <td style="border: 1px solid black;"><%= person.name %></td>
+        <td style="border: 1px solid black;">
+          <%= link_to "Show", person %>
+          <%= link_to "Edit", edit_group_path(person) %>
+          <%= link_to "Delete", person, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "New group", new_group_path %>

@@ -1,0 +1,32 @@
+<%= form_with model: @groups, local: true do |form| %>
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+  
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_area :phone %>
+  </div>
+  
+  <div>
+    <%= form.label :email %>
+    <%= form.text_area :email %>
+  </div>
+  
+  <div>
+    <%= form.label :password %>
+    <%= form.text_area :password %>
+  </div>
+  
+  <div>
+    <%= form.submit "Create group" %>
+  </div>
+
+  <%= link_to 'Back', groups_path %>
+<% end %>
