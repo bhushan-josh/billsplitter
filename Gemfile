@@ -28,7 +28,7 @@ gem 'jbuilder'
 
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'rubocop', '~> 1.69', '>= 1.69.2'
+gem 'rubocop', '~> 1.71'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[windows jruby]
