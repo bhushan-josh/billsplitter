@@ -32,11 +32,6 @@ gem 'jbuilder'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-
-# Use to securely store passwords in a database
-gem 'bcrypt', '~> 3.1.7'
-
 # Use to analyze and format Ruby code
 gem 'rubocop', '~> 1.71', require: false
 
@@ -56,7 +51,7 @@ gem 'rspec_api_documentation', '~> 6.1'
 gem 'jsbundling-rails', '~> 1.3'
 
 # Implement user authentication features within a web application
-gem 'devise', '~> 4.9'
+gem 'devise'
 
 # Use to manage authorization in Ruby on Rails applications
 gem 'pundit', '~> 2.4'
@@ -70,6 +65,10 @@ gem 'bootsnap', require: false
 gem 'rack-cors'
 
 gem 'active_model_serializers'
+
+gem 'dotenv-rails'
+
+gem 'fast_jsonapi'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -86,7 +85,7 @@ group :development, :test do
 
   # Byebug is a simple to use and feature rich debugger for Ruby
   gem 'byebug', '~> 11.1'
-  
+
   # SimpleCov is a code coverage analysis tool for Ruby
   gem 'simplecov', require: false, group: :test
 end

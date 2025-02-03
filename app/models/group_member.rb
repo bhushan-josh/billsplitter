@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class GroupMember < ApplicationRecord
-  # assosiations
+  # associations
   belongs_to :group
-  belongs_to :user
+  belongs_to :member, class_name: 'User'
 
-  # validation
-  validates :group, presence: true
-  validates :user, presence: true
+  # validations
+  validates :member_id, uniqueness: { scope: :group_id }
 
-  enum role: { admin: 'admin', member: 'member' }
+  enum :role, { member: 0, admin: 1 }
 end

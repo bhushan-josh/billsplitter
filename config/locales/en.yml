@@ -33,3 +33,9 @@ en:
   user_create: "Welcome You have successfully created an account"
   user_update: "User was successfully updated"
   user_delete: "User was successfully deleted"
+
+  auth:
+    login:
+      success: 'Login successful'
+      failure: 'Oops! Something went wrong'
+      user_invalid: 'User details are invalid, Please check details'
