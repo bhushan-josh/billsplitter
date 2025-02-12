@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :message
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,14 +18,12 @@ module V1
 
       def create_group
         @group = Group.new(create_params)
-
-        if @group.save
-          @message = I18n.t('group.create.success')
-          true
-        else
+        unless @group.save
           @message = I18n.t('group.create.failure')
-          false
+          return false
         end
+        @message = I18n.t('group.create.success')
+        true
       end
 
       def create_params

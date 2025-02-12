@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :user
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,13 +18,12 @@ module V1
 
       def update_user
         @user = User.find(update_params[:id])
-        if @user.update(update_params.except(:id))
-          @message = I18n.t('user.update.success')
-          true
-        else
+        unless @user.update(update_params.except(:id))
           @message = I18n.t('user.update.failure')
-          false
+          return false
         end
+        @message = I18n.t('user.update.success')
+        true
       end
 
       def update_params

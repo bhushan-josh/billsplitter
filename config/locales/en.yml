@@ -39,3 +39,54 @@ en:
       success: 'Login successful'
       failure: 'Oops! Something went wrong'
       user_invalid: 'User details are invalid, Please check details'
+
+    signup:
+      success: 'Signup successful'
+      failure: 'Oops! Something went wrong'
+
+
+  user:
+    show:
+      details: 'User details'
+      invalid: 'User is invalid'
+    update:
+      success: 'User updated successfully'
+      failure: 'User updation failed'
+    delete:
+      success: 'User deleted successfully'
+      failure: 'User delete failed'
+    index: 'User list'
+
+  group:
+    show:
+      details: 'Group details'
+      invalid: 'Group is invalid'
+    create:
+      success: 'Group created successfully'
+      failure: 'Group creation failed'
+    delete:
+      success: 'Group deleted successfully'
+      failure: 'Group deletion failed'
+    update:
+      success: 'Group updated successfully'
+      failure: 'Group updation failed'
+    index: 'Group list'
+
+  
+  expense:
+    show:
+      details: 'Expense details'
+      invalid: 'Expense is invalid'
+    create:
+      success: 'Expense created successfully'
+      failure: 'Expense creation failed'
+    delete:
+      success: 'Expense deleted successfully'
+      failure: 'Expense deletion failed'
+    update:
+      success: 'Expense updated successfully'
+      failure: 'Expense updation failed'
+    index: 'Expense list'
+
+
+  

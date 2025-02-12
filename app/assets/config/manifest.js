@@ -5,3 +5,4 @@
 //= link controllers/hello_controller.js
 //= link controllers/index.js
 //= link session.css
+//= link planet-bsb.css

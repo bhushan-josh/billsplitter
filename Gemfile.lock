@@ -254,6 +254,14 @@ GEM
     rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
+    rspec-rails (7.0.2)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
     rspec-support (3.13.2)
     rspec_api_documentation (6.1.0)
       activesupport (>= 3.0.0)
@@ -367,6 +375,7 @@ DEPENDENCIES
   pundit (~> 2.4)
   rack-cors
   rails (~> 7.2.2, >= 7.2.2.1)
+  rspec-rails
   rspec_api_documentation (~> 6.1)
   rubocop (~> 1.71)
   rubocop-rails-omakase

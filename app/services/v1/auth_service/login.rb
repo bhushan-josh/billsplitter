@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :user
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -33,7 +34,7 @@ module V1
       end
 
       def set_data
-        @data = V1::UserLoginSerializer.new(user).serializable_hash[:data]
+        @data = V1::UserLoginSerializer.new(user).serializable_hash
         @message = I18n.t('auth.login.success')
       end
 

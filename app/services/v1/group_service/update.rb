@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :group
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,13 +18,12 @@ module V1
 
       def update_group
         @group = Group.find(update_params[:id])
-        if @group.update(update_params.except(:id))
-          @message = I18n.t('group.update.success')
-          true
-        else
+        unless @group.update(update_params.except(:id))
           @message = I18n.t('group.update.failure')
-          false
+          return false
         end
+        @message = I18n.t('group.update.success')
+        true
       end
 
       def update_params

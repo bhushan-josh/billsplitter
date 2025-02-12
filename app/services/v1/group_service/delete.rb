@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :message
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,13 +18,12 @@ module V1
 
       def delete_group
         @group = Group.find(delete_params[:id])
-        if @group.destroy
-          @message = I18n.t('group.delete.success')
-          true
-        else
+        unless @group.destroy
           @message = I18n.t('group.delete.failure')
-          false
+          return false
         end
+        @message = I18n.t('group.delete.success')
+        true
       end
 
       def delete_params

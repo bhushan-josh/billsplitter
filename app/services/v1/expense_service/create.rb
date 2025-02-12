@@ -6,6 +6,7 @@ module V1
       attr_reader :params
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,14 +18,12 @@ module V1
 
       def create_expense
         @expense = Expense.new(create_params)
-
-        if @expense.save
-          @message = I18n.t('expense.create.success')
-          true
-        else
+        unless @expense.save
           @message = I18n.t('expense.create.failure')
-          false
+          return false
         end
+        @message = I18n.t('expense.create.success')
+        true
       end
 
       def create_params

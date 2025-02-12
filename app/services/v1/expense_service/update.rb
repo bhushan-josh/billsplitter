@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :expense
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,17 +18,16 @@ module V1
 
       def update_expense
         @expense = Expense.find(update_params[:id])
-        if @expense.update(update_params.except(:id))
-          @message = I18n.t('expense.update.success')
-          true
-        else
+        unless @expense.update(update_params.except(:id))
           @message = I18n.t('expense.update.failure')
-          false
+          return false
         end
+        @message = I18n.t('expense.update.success')
+        true
       end
 
       def update_params
-        params.permit(:id, :payer_id, :expense_id, :amount, :description)
+        params.permit(:id, :payer_id, :expense_id, :amount, :description, expense_splits_attributes: %i[payer_id payee_id amount status])
       end
     end
   end

@@ -1,7 +1,76 @@
-<h1>BillSplitter!</h1>
-<% if user_signed_in? %> 
- <div> Welcome <%= current_user.email %> </div> 
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-<% else %>
-  <%= button_to "Sign in", new_user_session_path %> 
-<% end %>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>BillSpliiter</title>
+  <meta name="description" content="Planet is a Free Bootstrap Blog Template.">
+  <meta name="author" content="BillSpliiter">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <%= stylesheet_link_tag "planet-bsb.css", data: { turbo_track: "reload" } %>
+
+</head>
+
+<body>
+
+  <header id="header" class="sticky-top bsb-tpl-header-sticky bsb-tpl-header-sticky-animationX">
+
+    <nav class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky bg-white border-bottom border-light-subtle" data-bsb-sticky-target="#header">
+      <div class="container">
+        <a class="navbar-brand" href="<%= root_path %>">
+          <img src="<%= asset_path('billsplitter.jpg') %>" class="bsb-tpl-logo" alt=""> 
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-body">
+
+            <ul class="navbar-nav justify-content-end flex-grow-1">
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<%=  %>">Index</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<%=  %>">Show</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<%=  %>">Update</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<%=  %>">Delete</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#!" id="blogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+                <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="blogDropdown">
+                  <li class="d-flex justify-content-center">
+                    <%# <a class="dropdown-item" >Profile</a> %>
+                    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link", style: "text-align: left;" %>
+                  </li>
+                  <li class="d-flex justify-content-center">
+                    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link", style: "text-align: left;" %>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+</body>
+</html>

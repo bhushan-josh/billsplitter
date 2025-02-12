@@ -6,12 +6,14 @@ module V1
       attr_reader :active_user
 
       def initialize(active_user)
+        super()
         @active_user = active_user
       end
 
       def call
         expenses = Expense.where(payer_id: active_user)
-        success_response(expenses)
+        message = I18n.t('expense.index')
+        success_response(message, expenses)
       end
     end
   end

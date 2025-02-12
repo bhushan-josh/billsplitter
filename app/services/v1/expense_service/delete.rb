@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :message
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,13 +18,12 @@ module V1
 
       def delete_expense
         @expense = Expense.find(delete_params[:id])
-        if @expense.destroy
-          @message = I18n.t('expense.delete.success')
-          true
-        else
+        unless @expense.destroy
           @message = I18n.t('expense.delete.failure')
-          false
+          return false
         end
+        @message = I18n.t('expense.delete.success')
+        true
       end
 
       def delete_params

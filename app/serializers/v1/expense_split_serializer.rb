@@ -2,6 +2,6 @@
 
 module V1
   class ExpenseSplitSerializer < ActiveModel::Serializer
-    attributes :payer_id, :payee_id, :amount, :status
+    attributes :id, :payer_id, :payee_id, :amount, :status
   end
 end

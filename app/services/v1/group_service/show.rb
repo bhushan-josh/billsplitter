@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :group
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -13,7 +14,7 @@ module V1
         return failure_response(message) unless validate_group
 
         set_data
-        success_response(data, message)
+        success_response(message, data)
       end
 
       def validate_group

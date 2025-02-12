@@ -47,6 +47,8 @@ gem 'jwt'
 # Automatically generate API documentation from RSpec
 gem 'rspec_api_documentation', '~> 6.1'
 
+gem 'rspec-rails'
+
 # Configure and use JavaScript bundlers in Rails applications
 gem 'jsbundling-rails', '~> 1.3'
 
@@ -67,8 +69,6 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 
 gem 'dotenv-rails'
-
-gem 'fast_jsonapi'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

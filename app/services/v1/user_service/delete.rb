@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :message
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,13 +18,12 @@ module V1
 
       def delete_user
         @user = User.find(delete_params[:id])
-        if @user.destroy
-          @message = I18n.t('user.delete.success')
-          true
-        else
+        unless @user.destroy
           @message = I18n.t('user.delete.failure')
-          false
+          return false
         end
+        @message = I18n.t('user.delete.success')
+        true
       end
 
       def delete_params

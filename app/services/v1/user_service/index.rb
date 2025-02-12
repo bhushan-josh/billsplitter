@@ -5,7 +5,8 @@ module V1
     class Index < V1::Base
       def call
         users = User.all
-        success_response(users)
+        message = I18n.t('user.index')
+        success_response(message, users)
       end
     end
   end

@@ -6,6 +6,7 @@ module V1
       attr_reader :params, :user
 
       def initialize(params)
+        super()
         @params = params
       end
 
@@ -17,13 +18,12 @@ module V1
 
       def create_user
         @user = User.new(signup_params)
-        if @user.save
-          @message = I18n.t('auth.signup.success')
-          true
-        else
+        unless @user.save
           @message = I18n.t('auth.signup.failure')
-          false
+          return false
         end
+        @message = I18n.t('auth.signup.success')
+        true
       end
 
       def signup_params

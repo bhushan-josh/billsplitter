@@ -6,12 +6,14 @@ module V1
       attr_reader :active_user
 
       def initialize(active_user)
+        super()
         @active_user = active_user
       end
 
       def call
         groups = Group.joins(:group_members).where('group_members.member_id = ?', active_user)
-        success_response(groups)
+        message = I18n.t('group.index')
+        success_response(message, groups)
       end
     end
   end
