@@ -9,21 +9,21 @@
 #   end
 
 
-users = [
-  { first_name: "Bhushan", last_name: "Nagpure", phone: "7040499405", email: "bhushan@gmail.com", password: "Bhushan123" },
-  { first_name: "Harsh", last_name: "Jagtap", phone: "7043399405", email: "harsh8@gmail.com", password: "Harsh123" },
-  { first_name: "Sahil", last_name: "Bheke", phone: "7046699405", email: "sahil@gmail.com", password: "Sahil123" },
-  { first_name: "Krushnal", last_name: "Patil", phone: "7044599405", email: "keushnal@gmail.com", password: "Keushnal123" }
-]
+# users = [
+#   { first_name: "Bhushan", last_name: "Nagpure", phone: "7040499405", email: "nagpurebn@gmail.com", password: "qwertyuiop" },
+#   { first_name: "Harsh", last_name: "Jagtap", phone: "7043399405", email: "harsh8@gmail.com", password: "Harsh123" },
+#   { first_name: "Sahil", last_name: "Bheke", phone: "7046699405", email: "sahil@gmail.com", password: "Sahil123" },
+#   { first_name: "Krushnal", last_name: "Patil", phone: "7044599405", email: "keushnal@gmail.com", password: "Keushnal123" }
+# ]
 
-users.each do |user_data|
-  User.find_or_create_by!(email: user_data[:email]) do |user|
-    user.first_name = user_data[:first_name]
-    user.last_name = user_data[:last_name]
-    user.phone = user_data[:phone]
-    user.password = user_data[:password]
-  end
-end
+# users.each do |user_data|
+#   User.find_or_create_by!(email: user_data[:email]) do |user|
+#     user.first_name = user_data[:first_name]
+#     user.last_name = user_data[:last_name]
+#     user.phone = user_data[:phone]
+#     user.password = user_data[:password]
+#   end
+# end
 
 # creator = User.find_by(email: "bhushan@gmail.com")
 
@@ -34,3 +34,12 @@ end
 # )
 
 # user = User.find_or_create_by!(first_name: "Bhushan", last_name: "Nagpure", phone: "7040499405", email: "bhushan@gmail.com", password: "Bhushan@123")
+
+params = { member: {
+  name: "Room",
+  creator: User.find_by(email: "nagpurebn@gmail.com"),
+  description: "This group has room expenses",
+  group_members_attributes: { member: 13, role: 1 }
+}}
+
+group1 = Group.create(params[:member])
