@@ -21,13 +21,13 @@ module V1
         @expense = Expense.find(show_params[:id])
         return true if expense
 
-        @message = I18n.t('expense.show.invalid')
+        @message = I18n.t('message.show.invalid', item: 'Expense')
         false
       end
 
       def set_data
         @data = V1::ExpenseSerializer.new(expense).serializable_hash
-        @message = I18n.t('expense.show.details')
+        @message = I18n.t('message.show.details', item: 'Expense')
       end
 
       def show_params

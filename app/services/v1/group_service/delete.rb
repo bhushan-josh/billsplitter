@@ -19,10 +19,10 @@ module V1
       def delete_group
         @group = Group.find(delete_params[:id])
         unless @group.destroy
-          @message = I18n.t('group.delete.failure')
+          @message = I18n.t('message.delete.failure', item: 'Group')
           return false
         end
-        @message = I18n.t('group.delete.success')
+        @message = I18n.t('message.delete.success', item: 'Group')
         true
       end
 

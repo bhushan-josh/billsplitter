@@ -12,7 +12,7 @@ module V1
 
       def call
         expenses = Expense.where(payer_id: active_user)
-        message = I18n.t('expense.index')
+        message = I18n.t('message.index', item: 'Expense')
         success_response(message, expenses)
       end
     end

@@ -21,13 +21,13 @@ module V1
         @group = Group.find(show_params[:id])
         return true if group
 
-        @message = I18n.t('group.show.invalid')
+        @message = I18n.t('message.show.invalid', item: 'Group')
         false
       end
 
       def set_data
         @data = V1::GroupSerializer.new(group).serializable_hash
-        @message = I18n.t('group.show.details')
+        @message = I18n.t('message.show.details', item: 'Group')
       end
 
       def show_params

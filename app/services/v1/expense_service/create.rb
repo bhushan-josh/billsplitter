@@ -13,16 +13,16 @@ module V1
       def call
         return failure_response(message, errors: expense.errors) unless create_expense
 
-        success_response(message)
+        success_response(message, @expense)
       end
 
       def create_expense
         @expense = Expense.new(create_params)
         unless @expense.save
-          @message = I18n.t('expense.create.failure')
+          @message = I18n.t('message.create.failure', item: 'Expense')
           return false
         end
-        @message = I18n.t('expense.create.success')
+        @message = I18n.t('message.create.success', item: 'Expense')
         true
       end
 

@@ -12,7 +12,7 @@ module V1
 
       def call
         groups = Group.joins(:group_members).where('group_members.member_id = ?', active_user)
-        message = I18n.t('group.index')
+        message = I18n.t('message.index', item: 'Group')
         success_response(message, groups)
       end
     end

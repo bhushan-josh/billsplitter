@@ -13,16 +13,16 @@ module V1
       def call
         return failure_response(message, errors: group.errors) unless create_group
 
-        success_response(message)
+        success_response(message, @group)
       end
 
       def create_group
         @group = Group.new(create_params)
         unless @group.save
-          @message = I18n.t('group.create.failure')
+          @message = I18n.t('message.create.failure', item: 'Group')
           return false
         end
-        @message = I18n.t('group.create.success')
+        @message = I18n.t('message.create.success', item: 'Group')
         true
       end
 
