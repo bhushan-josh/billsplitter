@@ -19,10 +19,10 @@ module V1
       def update_group
         @group = Group.find(update_params[:id])
         unless @group.update(update_params.except(:id))
-          @message = I18n.t('group.update.failure')
+          @message = I18n.t('message.update.failure', item: 'Group')
           return false
         end
-        @message = I18n.t('group.update.success')
+        @message = I18n.t('message.update.success', item: 'Group')
         true
       end
 

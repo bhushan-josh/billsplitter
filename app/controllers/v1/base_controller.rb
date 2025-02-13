@@ -14,11 +14,11 @@ class V1::BaseController < ApplicationController
   def authenticate!
     raise ActiveRecord::RecordNotFound unless active_user
   rescue ActiveRecord::RecordNotFound
-    render json: { message: I18n.t('auth') }, status: :unauthorized
+    render json: { message: I18n.t('authorization.no_record') }, status: :unauthorized
   rescue JWT::DecodeError
-    render json: { message: I18n.t('auth') }, status: :unauthorized
+    render json: { message: I18n.t('authorization.decode_error') }, status: :unauthorized
   rescue JWT::ExpiredSignature
-    render json: { message: I18n.t('auth') }, status: :unauthorized
+    render json: { message: I18n.t('authorization.expire') }, status: :unauthorized
   end
 
   def active_user

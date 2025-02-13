@@ -22,17 +22,16 @@
 # Be aware that YAML interprets the following case-insensitive strings as
 # booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
 # must be quoted to be interpreted as strings. For example:
-#
+#s
 #     en:
 #       "yes": yup
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
-  test: "This is a test"
-  user_create: "Welcome You have successfully created an account"
-  user_update: "User was successfully updated"
-  user_delete: "User was successfully deleted"
+  authorization:
+    no_record: 'No record found'
+    decode_error: 'Unauthorized to access'
+    expire: 'You have been logged out, please log in'
 
   auth:
     login:
@@ -44,49 +43,19 @@ en:
       success: 'Signup successful'
       failure: 'Oops! Something went wrong'
 
-
-  user:
-    show:
-      details: 'User details'
-      invalid: 'User is invalid'
-    update:
-      success: 'User updated successfully'
-      failure: 'User updation failed'
-    delete:
-      success: 'User deleted successfully'
-      failure: 'User delete failed'
-    index: 'User list'
-
-  group:
-    show:
-      details: 'Group details'
-      invalid: 'Group is invalid'
+  message:
     create:
-      success: 'Group created successfully'
-      failure: 'Group creation failed'
-    delete:
-      success: 'Group deleted successfully'
-      failure: 'Group deletion failed'
-    update:
-      success: 'Group updated successfully'
-      failure: 'Group updation failed'
-    index: 'Group list'
-
-  
-  expense:
+      success: "%{item} created successfully"
+      failure: "%{item} creation failed"
+      other:
+        no_balance: "No balance to make %{item} "
     show:
-      details: 'Expense details'
-      invalid: 'Expense is invalid'
-    create:
-      success: 'Expense created successfully'
-      failure: 'Expense creation failed'
-    delete:
-      success: 'Expense deleted successfully'
-      failure: 'Expense deletion failed'
+      details: "%{item} details"
+      invalid: "%{item} is invalid"
     update:
-      success: 'Expense updated successfully'
-      failure: 'Expense updation failed'
-    index: 'Expense list'
-
-
-  
+      success: "%{item} updated successfully"
+      failure: "%{item} update failed"
+    delete:
+      success: "%{item} deleted successfully"
+      failure: "%{item} deletion failed"
+    index: '%{item} list'

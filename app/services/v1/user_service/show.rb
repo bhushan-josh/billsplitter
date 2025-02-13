@@ -21,13 +21,13 @@ module V1
         @user = User.find(show_params[:id])
         return true if user
 
-        @message = I18n.t('user.show.invalid')
+        @message = I18n.t('message.show.invalid', item: 'User')
         false
       end
 
       def set_data
         @data = V1::UserLoginSerializer.new(user).serializable_hash
-        @message = I18n.t('user.show.details')
+        @message = I18n.t('message.show.details', item: 'User')
       end
 
       def show_params
