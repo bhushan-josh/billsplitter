@@ -29,5 +29,7 @@ module Billsplitte
     # ...
 
     config.i18n.default_locale = :en
+    config.assets.unknown_asset_fallback = true
+
   end
 end
