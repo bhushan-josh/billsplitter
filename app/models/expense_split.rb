@@ -11,5 +11,5 @@ class ExpenseSplit < ApplicationRecord
   validates :payer, presence: true
   validates :payee, presence: true
   validates :amount, presence: true
-  enum status: { pending: 0, settle: 1 }
+  enum status: { pending: 0, settled: 1 }
 end

@@ -19,10 +19,10 @@ module V1
       def delete_user
         @user = User.find(delete_params[:id])
         unless @user.destroy
-          @message = I18n.t('user.delete.failure')
+          @message = I18n.t('message.delete.failure', item: 'User')
           return false
         end
-        @message = I18n.t('user.delete.success')
+        @message = I18n.t('message.delete.success', item: 'User')
         true
       end
 

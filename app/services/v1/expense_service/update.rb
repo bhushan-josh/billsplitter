@@ -19,10 +19,10 @@ module V1
       def update_expense
         @expense = Expense.find(update_params[:id])
         unless @expense.update(update_params.except(:id))
-          @message = I18n.t('expense.update.failure')
+          @message = I18n.t('message.update.failure', item: 'Expense')
           return false
         end
-        @message = I18n.t('expense.update.success')
+        @message = I18n.t('message.update.success', item: 'Expense')
         true
       end
 

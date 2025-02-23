@@ -19,7 +19,7 @@ module V1
       def delete_expense
         @expense = Expense.find(delete_params[:id])
         unless @expense.destroy
-          @message = I18n.t('expense.delete.failure')
+          @message = I18n.t('message.delete.failure', item: 'Expense')
           return false
         end
         @message = I18n.t('expense.delete.success')
