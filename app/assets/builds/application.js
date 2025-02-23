@@ -8397,8 +8397,22 @@ var hello_controller_default = class extends Controller {
   }
 };
 
+// app/javascript/controllers/modals_controller.js
+var modals_controller_default = class extends Controller {
+  connect() {
+  }
+  close(e) {
+    e.preventDefault();
+    const modal = document.getElementById("modal");
+    modal.innerHTML = "";
+    modal.removeAttribute("src");
+    modal.removeAttribute("complete");
+  }
+};
+
 // app/javascript/controllers/index.js
 application.register("hello", hello_controller_default);
+application.register("modals", modals_controller_default);
 
 // node_modules/@popperjs/core/lib/index.js
 var lib_exports = {};

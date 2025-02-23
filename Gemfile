@@ -56,7 +56,7 @@ gem 'jsbundling-rails', '~> 1.3'
 gem 'devise'
 
 # Use to manage authorization in Ruby on Rails applications
-gem 'pundit', '~> 2.4'
+gem 'cancancan'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[windows jruby]
