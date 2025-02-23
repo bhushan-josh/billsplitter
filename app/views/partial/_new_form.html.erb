@@ -1,0 +1,77 @@
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <%= form_with model: user, class: "needs-validation" do |form| %>
+              <div class="row gy-2 overflow-hidden">
+                
+                <div class="col-12 col-md-6">
+                  <div class="form-floating mb-3">
+                    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name", required: true %>
+                    <label for="first_name" class="form-label">First Name</label>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <div class="form-floating mb-3">
+                    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true %>
+                    <label for="last_name" class="form-label">Last Name</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.telephone_field :phone, class: "form-control", placeholder: "Phone", required: true %>
+                    <label for="phone" class="form-label">Phone</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.email_field :email, class: "form-control", placeholder: "name@example.com", required: true %>
+                    <label for="email" class="form-label">Email</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+                    <label for="password" class="form-label">Password</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="d-grid my-3">
+                    <%= form.submit "Create User", class: "btn btn-primary btn-lg" %>
+                  </div>
+                </div>
+
+                <div class="col-12 text-center">
+                  <%= link_to 'Cancel', users_path, class: "link-primary text-decoration-none" %>
+                </div>
+
+              </div>
+            <% end %>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>

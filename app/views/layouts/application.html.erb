@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Billsplitte" %></title>
+    <title><%= content_for(:title) || "BS" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -9,10 +9,10 @@
 
     <%= yield :head %>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="manifest" href="<%= asset_path('manifest.json') %>">
+    <link rel="icon" href="<%= asset_path('icon.webp') %>" type="image/webp">
+    <link rel="apple-touch-icon" href="<%= asset_path('icon.png') %>">
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "session", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -20,7 +20,15 @@
   </head>
 
   <body>
-    
+    <% if user_signed_in? %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
+
     <%= yield %>
+
+    <% if user_signed_in? %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+
   </body>
 </html>

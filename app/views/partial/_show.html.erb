@@ -1,0 +1,30 @@
+<% @users.each do |person| %>
+  <div class="modal fade" id="showModal_<%= person.id %>" tabindex="-1" aria-labelledby="userModalLabel_<%= person.id %>" aria-hidden="true" 
+  style= "background:rgba(55,55,55,.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="userModalLabel_<%= person.id %>">User Details</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container mt-4">
+            <div class="card shadow-sm p-4">
+              <h3 class="mb-3"><%= person.first_name.camelize %> <%= person.last_name.camelize %></h3>
+              <p><strong>Phone Number:</strong> <%= person.phone %></p>
+              <p><strong>Email Address:</strong> <%= person.email %></p>
+              <p><strong>Role:</strong> <%= person.role %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

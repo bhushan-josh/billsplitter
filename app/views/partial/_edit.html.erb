@@ -1,0 +1,74 @@
+<% @users.each do |person| %>
+  <div class="modal fade" id="editModal_<%= person.id %>" tabindex="-1" aria-labelledby="userModalLabel_<%= person.id %>" aria-hidden="true" 
+       style="background: rgba(55,55,55,.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="userModalLabel_<%= person.id %>">Edit User</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <%= form_with model: person, url: user_path(person), method: :patch, class: "needs-validation" do |form| %>
+            <div class="row gy-2 overflow-hidden">
+              
+              <div class="col-12 col-md-6">
+                <div class="form-floating mb-3">
+                  <%= form.text_field :first_name, class: "form-control", placeholder: "First Name", required: true %>
+                  <label for="person_<%= person.id %>_first_name">First Name</label>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="form-floating mb-3">
+                  <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true %>
+                  <label for="person_<%= person.id %>_last_name">Last Name</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating mb-3">
+                  <%= form.telephone_field :phone, class: "form-control", placeholder: "Phone", required: true %>
+                  <label for="person_<%= person.id %>_phone">Phone</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating mb-3">
+                  <%= form.email_field :email, class: "form-control", placeholder: "name@example.com", required: true %>
+                  <label for="person_<%= person.id %>_email">Email</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating mb-3">
+                  <%= form.password_field :password, class: "form-control", value: "Password" %>
+                  <label for="person_<%= person.id %>_password">Password</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating mb-3">
+                  <%= form.text_field :role, class: "form-control", placeholder: "Role" %>
+                  <label for="person_<%= person.id %>_role">Role</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="d-grid my-3">
+                  <%= form.submit "Save Changes", class: "btn btn-primary btn-lg" %>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <%= link_to 'Cancel', users_path, class: "link-primary text-decoration-none" %>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

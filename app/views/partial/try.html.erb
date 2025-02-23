@@ -1,0 +1,209 @@
+<% @users.each do |person| %>
+  <!-- User Modal -->
+  <div class="modal fade" id="userModal_<%= person.id %>" tabindex="-1" aria-labelledby="userModalLabel_<%= person.id %>" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="userModalLabel_<%= person.id %>">User Details</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container mt-4">
+            <div class="card shadow-sm p-4">
+              <h1 class="mb-3"><%= person.first_name.camelize %> <%= person.last_name.camelize %></h1>
+              <p><strong>Phone Number:</strong> <%= person.phone_number %></p>
+              <p><strong>Email Address:</strong> <%= person.email %></p>
+              <p><strong>Role:</strong> <%= person.role %></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+<td class="text-end">
+  <button type="button" 
+          class="btn btn-success rounded-pill px-4 shadow-sm" 
+          data-bs-toggle="modal" 
+          data-bs-target="#userModal_<%= person.id %>">
+    Show
+  </button>
+
+  <%= link_to "Edit", edit_user_path(person), class: "btn btn-outline-warning btn-sm rounded-pill px-3 shadow-sm" %>
+  <%= link_to "Delete", person, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm rounded-pill px-3 shadow-sm" %>
+</td>
+
+
+
+
+oldddddddd
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">User Details</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+
+      <div class="container mt-4">
+        <div class="card shadow-sm p-4">
+          <h1 class="mb-3"><%=  %></h1>
+
+          <p><strong>Phone Number:</strong> <%= %></p>
+          <p><strong>Email Address:</strong> <%= %></p>
+          <p><strong>Role:</strong> <%=  %></p>
+
+          <div class="mt-3">
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  edit 
+
+
+
+
+  <% @users.each do |person| %>
+  <div class="modal fade" id="editModal_<%= person.id %>" tabindex="-1" aria-labelledby="userModalLabel_<%= person.id %>" aria-hidden="true" 
+  style= "background:rgba(55,55,55,.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="userModalLabel_<%= person.id %>">User Details</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+<div class="py-3 py-md-5">
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="row justify-content-center w-100">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5">
+        <div class="card border border-light-subtle rounded-3 shadow-sm">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <h2 class="fs-5 fw-bold text-center text-secondary mb-4">Edit Profile</h2>
+
+            <%= form_with model: @users, class: "needs-validation" do |form| %>
+              <div class="row gy-2 overflow-hidden">
+                
+                <div class="col-12 col-md-6">
+                  <div class="form-floating mb-3">
+                    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name", required: true %>
+                    <label for="first_name" class="form-label">First Name</label>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <div class="form-floating mb-3">
+                    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true %>
+                    <label for="last_name" class="form-label">Last Name</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.telephone_field :phone, class: "form-control", placeholder: "Phone", required: true %>
+                    <label for="phone" class="form-label">Phone</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.email_field :email, class: "form-control", placeholder: "name@example.com", required: true %>
+                    <label for="email" class="form-label">Email</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+                    <label for="password" class="form-label">Password</label>
+                  </div>
+                </div>
+
+
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <%= form.text_field :role, class: "form-control", placeholder: "Role" %>
+                    <label for="role" class="form-label">Role</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="d-grid my-3">
+                    <%= form.submit "Save Changes", class: "btn btn-primary btn-lg" %>
+                  </div>
+                </div>
+
+                <div class="col-12 text-center">
+                  <%= link_to 'Cancel', users_path, class: "link-primary text-decoration-none" %>
+                </div>
+
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
