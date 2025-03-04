@@ -23,7 +23,7 @@ module V1
         calculate_balance
         return failure_response(I18n.t('settlement.create.other.no_balance', item: 'Settlement')) if @balance.zero?
 
-        @settlement = Settlement.new(payer_id: @active_user.id, payee_id: create_params[:payee_id], amount: @balance)
+        @settlement = Settlement.new(payer_id: create_params[:payee_id], payee_id: @active_user.id, amount: @balance)
 
         unless @settlement.save
           @message = I18n.t('message.create.failure', item: 'Settlement')

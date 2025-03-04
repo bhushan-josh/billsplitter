@@ -36,8 +36,8 @@
 
                 <%= link_to "Delete", person, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm rounded-pill px-3 shadow-sm" %>
               </td>
-            <%= render 'partial/show', user: @person %>
-            <%= render 'partial/edit', user: @person %>
+            <%= render 'show', user: @person %>
+            <%= render 'edit', user: @person %>
             </tr>
           <% end %>
         <% else %>

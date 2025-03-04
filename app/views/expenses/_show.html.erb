@@ -1,0 +1,33 @@
+<div class="modal fade" id="showModal_<%= expense.id %>" tabindex="-1" aria-labelledby="expenseModalLabel_<%= expense.id %>" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title" id="expenseModalLabel_<%= expense.id %>">Expense Details</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <p><strong>Description:</strong> <%= expense.description %></p>
+        <p><strong>Amount:</strong> ₹<%= '%.2f' % expense.amount %></p>
+        <p><strong>Paid By:</strong> <%= expense.payer.first_name.camelize %> <%= expense.payer.last_name.camelize %></p>
+        <p><strong>Group:</strong> <%= expense.group.name.camelize %></p>
+
+        <h5 class="mt-3">Owed By:</h5>
+        <ul class="list-group">
+          <% expense.expense_splits.each do |split| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span><%= split.payee.first_name.camelize %> <%= split.payee.last_name.camelize %></span>
+              <span>₹<%= '%.2f' % split.amount %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-pill px-4 shadow-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

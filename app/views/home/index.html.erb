@@ -1,9 +1,9 @@
-
-<header class="bg-primary text-white text-center py-5">
+<% if current_user.admin? %>
+<header class="bg-secondary text-white text-center py-5 min-vh-1/2">
   <div class="container">
     <h1 class="display-4 fw-bold">BillSplitter</h1>
     <p class="lead">The easiest way to split bills with friends and keep track of expenses.</p>
-    <a href="<%= new_user_registration_path %>" class="btn btn-light btn-lg rounded-pill mt-3">
+    <a href="<%= users_path %>" class="btn btn-light btn-lg rounded-pill mt-3">
       Get Started <i class="bi bi-arrow-right"></i>
     </a>
   </div>
@@ -35,3 +35,4 @@
     </div>
   </div>
 </section>
+<% end %>

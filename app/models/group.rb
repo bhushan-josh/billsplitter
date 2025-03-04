@@ -5,6 +5,7 @@ class Group < ApplicationRecord
   belongs_to :creator, class_name: 'User', optional: true
 
   has_many :group_members, dependent: :destroy
+  has_many :members, through: :group_members, source: :member
   has_many :expenses, dependent: :destroy
   accepts_nested_attributes_for :group_members, allow_destroy: true
 

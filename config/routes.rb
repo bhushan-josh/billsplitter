@@ -14,9 +14,13 @@ Rails.application.routes.draw do
     resources :users
     resources :groups
     resources :expenses
+    resources :expense_splits
     resources :settlements
   end
 
   root to: "home#index"
   resources :users
+  resources :groups
+  resources :expenses
+  resources :settlements
 end
