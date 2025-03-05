@@ -1,1 +1,52 @@
-<h1>Settlements Details</h1>
+<div class="container mt-4">
+  <h2 class="text-center text-primary fw-bold mb-4">Settlement Management</h2>
+
+  <div class="d-flex justify-content-center mb-4">
+    <%= form_with(url: settlements_path, method: :get, local: true, class: "d-flex gap-2 w-50") do %>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-light rounded-pill px-3"><i class="bi bi-search text-primary"></i></span>
+        <%= text_field_tag :search, params[:search], class: "form-control border-light rounded-pill shadow-sm", placeholder: "Search settlements..." %>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-primary rounded-pill px-4 shadow-sm" %>
+    <% end %>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+    <table class="table table-hover align-middle">
+      <thead class="table">
+        <tr>
+          <th class="text-start">Payer</th>
+          <th class="text-start">Payee</th>
+          <th class="text-start">Amount</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @settlements.any? %>
+          <% @settlements.each do |settlement| %>
+            <tr>
+              <td class="fw-bold"><%= settlement.payer.first_name.camelize %> <%= settlement.payer.last_name.camelize %></td>
+              <td class="fw-bold"><%= settlement.payee.first_name.camelize %> <%= settlement.payee.last_name.camelize %></td>
+              <td class="text-muted">₹<%= '%.2f' % settlement.amount %></td>
+              <td class="text-end">
+                <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#showModal_<%= settlement.id %>">
+                  Show
+                </button>
+                <%# <button type="button" class="btn btn-outline-success btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#editModal_<%= settlement.id %>
+                  <%# Edit %>
+                <%# </button> %>
+                <%= link_to "Delete", settlement, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm rounded-pill px-3 shadow-sm" %>
+              </td>
+            </tr>
+            <%= render 'show', settlement: settlement %>
+            <%# <%= render 'edit', settlement: settlement %>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="4" class="text-center text-muted">No settlements found.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

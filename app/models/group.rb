@@ -2,9 +2,10 @@
 
 class Group < ApplicationRecord
   # associations
-  belongs_to :creator, class_name: 'User'
+  belongs_to :creator, class_name: 'User', optional: true
 
   has_many :group_members, dependent: :destroy
+  has_many :members, through: :group_members, source: :member
   has_many :expenses, dependent: :destroy
   accepts_nested_attributes_for :group_members, allow_destroy: true
 
@@ -18,5 +19,4 @@ class Group < ApplicationRecord
 
   # validation
   validates :name, presence: true, uniqueness: true
-  validates :creator, presence: true
 end

@@ -1,0 +1,58 @@
+<% @groups.each do |group| %>
+  <div class="modal fade" id="editModal_<%= group.id %>" tabindex="-1" aria-labelledby="groupModalLabel_<%= group.id %>" aria-hidden="true" 
+       style="background: rgba(55,55,55,.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="groupModalLabel_<%= group.id %>">Edit Group</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <%= form_with model: group, url: group_path(group), method: :patch, class: "needs-validation" do |form| %>
+            <div class="row gy-2 overflow-hidden">
+              
+              <div class="col-12">
+                <div class="form-floating mb-3">
+                  <%= form.text_field :name, class: "form-control", placeholder: "Group Name", required: true %>
+                  <label for="group_<%= group.id %>_name">Group Name</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating mb-3">
+                  <%= form.text_area :description, class: "form-control", placeholder: "Description", rows: 3 %>
+                  <label for="group_<%= group.id %>_description">Description</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label class="fw-bold">Group Members</label>
+                <ul class="list-group mb-3">
+                  <% group.members.each do |member| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span><%= member.first_name.camelize %> <%= member.last_name.camelize %></span>
+                      <span><%= member.role %></span>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+
+              <div class="col-12">
+                <div class="d-grid my-3">
+                  <%= form.submit "Save Changes", class: "btn btn-primary rounded-pill px-4 py-2 shadow-sm" %>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <%= link_to 'Cancel', groups_path, class: "link-primary text-decoration-none" %>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,1 +1,54 @@
-<h1>Expenses Details</h1>
+<div class="container mt-4">
+  <h2 class="text-center text-primary fw-bold mb-4">Expense Management</h2>
+
+  <div class="d-flex justify-content-center mb-4">
+    <%= form_with(url: expenses_path, method: :get, local: true, class: "d-flex gap-2 w-50") do %>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-light rounded-pill px-3"><i class="bi bi-search text-primary"></i></span>
+        <%= text_field_tag :search, params[:search], class: "form-control border-light rounded-pill shadow-sm", placeholder: "Search expenses..." %>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-primary rounded-pill px-4 shadow-sm" %>
+    <% end %>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+    <table class="table table-hover align-middle">
+      <thead class="table">
+        <tr>
+          <th class="text-start">Description</th>
+          <th class="text-start">Amount</th>
+          <th class="text-start">Paid By</th>
+          <th class="text-start">Group</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @expenses.any? %>
+          <% @expenses.each do |expense| %>
+            <tr>
+              <td class="fw-bold"><%= expense.description.camelize %></td>
+              <td class="text-muted">₹<%= '%.2f' % expense.amount %></td>
+              <td class="text-muted"><%= expense.payer.first_name.camelize %> <%= expense.payer.last_name.camelize %></td>
+              <td class="text-muted"><%= expense.group.name.camelize %></td>
+              <td class="text-end">
+                <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#showModal_<%= expense.id %>">
+                  Show
+                </button>
+                <%# <button type="button" class="btn btn-outline-success btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#editModal_<%= expense.id %>
+                  <%# Edit %>
+                <%# </button> %>
+                <%= link_to "Delete", expense, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm rounded-pill px-3 shadow-sm" %>
+              </td>
+            </tr>
+            <%= render 'show', expense: expense %>
+            <%= render 'edit', expense: expense %>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5" class="text-center text-muted">No expenses found.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

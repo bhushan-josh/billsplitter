@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_13_102925) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_04_060622) do
   create_table "expense_splits", force: :cascade do |t|
-    t.integer "expense_id", null: false
+    t.integer "expense_id"
     t.integer "payer_id", null: false
     t.integer "payee_id", null: false
     t.integer "amount"

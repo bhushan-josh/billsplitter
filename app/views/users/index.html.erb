@@ -1,27 +1,51 @@
-<h1>User Details</h1>
+<div class="container mt-4">
+  <h2 class="text-center text-primary fw-bold mb-4">User Management</h2>
 
-<table style="border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid black;">First Name</th>
-      <th style="border: 1px solid black;">Last Name</th>
-      <th style="border: 1px solid black;">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |person| %>
-      <tr>
-        <td style="border: 1px solid black;"><%= person.first_name %></td>
-        <td style="border: 1px solid black;"><%= person.last_name %></td>
-        <td style="border: 1px solid black;">
-          <%= link_to "Show", person %>
-          <%= link_to "Edit", edit_user_path(person) %>
-          <%= link_to "Delete", person, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        </td>
-      </tr>
+  <div class="d-flex justify-content-center mb-4">
+    <%= form_with(url: users_path, method: :get, local: true, class: "d-flex gap-2 w-50") do %>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-light rounded-pill px-3"><i class="bi bi-search text-primary"></i></span>
+        <%= text_field_tag :search, params[:search], class: "form-control border-light rounded-pill shadow-sm", placeholder: "Search users..." %>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-primary rounded-pill px-4 shadow-sm" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-<%= link_to "New User", new_user_path %>
+  <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+    <table class="table table-hover align-middle">
+      <thead class="table">
+        <tr>
+          <th class="text-start">Name</th>
+          <th class="text-start">Email</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @users.any? %>
+          <% @users.each do |person| %>
+            <tr>
+              <td class="fw-bold"><%= person.first_name.camelize %> <%= person.last_name.camelize %></td>
+              <td class="text-muted"><%= person.email %></td>
+              <td class="text-end">
+                <button type="button" class="btn btn-outline-primary btn-sm  rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#showModal_<%= person.id %>">
+                  Show
+                </button>
+                 <button type="button" class="btn btn-outline-success btn-sm  rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#editModal_<%= person.id %>">
+                  Edit
+                </button>
+
+                <%= link_to "Delete", person, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm rounded-pill px-3 shadow-sm" %>
+              </td>
+            <%= render 'show', user: @person %>
+            <%= render 'edit', user: @person %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="3" class="text-center text-muted">No users found.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,76 +1,38 @@
-<!doctype html>
-<html lang="en">
+<% if current_user.admin? %>
+<header class="bg-secondary text-white text-center py-5 min-vh-1/2">
+  <div class="container">
+    <h1 class="display-4 fw-bold">BillSplitter</h1>
+    <p class="lead">The easiest way to split bills with friends and keep track of expenses.</p>
+    <a href="<%= users_path %>" class="btn btn-light btn-lg rounded-pill mt-3">
+      Get Started <i class="bi bi-arrow-right"></i>
+    </a>
+  </div>
+</header>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>BillSpliiter</title>
-  <meta name="description" content="Planet is a Free Bootstrap Blog Template.">
-  <meta name="author" content="BillSpliiter">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <%= stylesheet_link_tag "planet-bsb.css", data: { turbo_track: "reload" } %>
-
-</head>
-
-<body>
-
-  <header id="header" class="sticky-top bsb-tpl-header-sticky bsb-tpl-header-sticky-animationX">
-
-    <nav class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky bg-white border-bottom border-light-subtle" data-bsb-sticky-target="#header">
-      <div class="container">
-        <a class="navbar-brand" href="<%= root_path %>">
-          <img src="<%= asset_path('billsplitter.jpg') %>" class="bsb-tpl-logo" alt=""> 
-        </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-body">
-
-            <ul class="navbar-nav justify-content-end flex-grow-1">
-
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="<%=  %>">Index</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="<%=  %>">Show</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="<%=  %>">Update</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="<%=  %>">Delete</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#!" id="blogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
-                <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="blogDropdown">
-                  <li class="d-flex justify-content-center">
-                    <%# <a class="dropdown-item" >Profile</a> %>
-                    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link", style: "text-align: left;" %>
-                  </li>
-                  <li class="d-flex justify-content-center">
-                    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link", style: "text-align: left;" %>
-                  </li>
-                </ul>
-              </li>
-
-            </ul>
-          </div>
-        </div>
+<section class="container my-5">
+  <h2 class="text-center mb-4">Why Use BillSplitter?</h2>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4">
+        <i class="bi bi-cash-stack fs-1 text-primary"></i>
+        <h4 class="mt-3">Track Expenses</h4>
+        <p>Keep a detailed record of all shared expenses and personal contributions.</p>
       </div>
-    </nav>
-  </header>
-</body>
-</html>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4">
+        <i class="bi bi-people fs-1 text-success"></i>
+        <h4 class="mt-3">Manage Groups</h4>
+        <p>Organize expenses easily by creating groups for different events or trips.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4">
+        <i class="bi bi-wallet2 fs-1 text-danger"></i>
+        <h4 class="mt-3">Simplified Settlements</h4>
+        <p>Settle up in just a few clicks without any confusion over who owes what.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

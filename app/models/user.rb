@@ -7,13 +7,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   # Associations
-  has_many :groups, foreign_key: :creator_id, class_name: 'Group', dependent: :nullify
+  has_many :groups, foreign_key: :creator_id, class_name: 'Group', dependent: :destroy
   has_many :group_members, foreign_key: :member_id, class_name: 'GroupMember', dependent: :destroy
   has_many :expenses, foreign_key: :payer_id, dependent: :destroy
-  has_many :expense_splits_as_payer, class_name: 'ExpenseSplit', foreign_key: :payer_id, dependent: :nullify
-  has_many :expense_splits_as_payee, class_name: 'ExpenseSplit', foreign_key: :payee_id, dependent: :nullify
-  has_many :settlements_as_payer, class_name: 'Settlement', foreign_key: :payer_id, dependent: :nullify
-  has_many :settlements_as_payee, class_name: 'Settlement', foreign_key: :payee_id, dependent: :nullify
+  has_many :expense_splits_as_payer, class_name: 'ExpenseSplit', foreign_key: :payer_id, dependent: :destroy
+  has_many :expense_splits_as_payee, class_name: 'ExpenseSplit', foreign_key: :payee_id, dependent: :destroy
+  has_many :settlements_as_payer, class_name: 'Settlement', foreign_key: :payer_id, dependent: :destroy
+  has_many :settlements_as_payee, class_name: 'Settlement', foreign_key: :payee_id, dependent: :destroy
+
+  def admin?
+    role == 'admin'
+  end
 
   # Validations
   validates :first_name, :last_name, presence: true, length: { minimum: 3, maximum: 10 }

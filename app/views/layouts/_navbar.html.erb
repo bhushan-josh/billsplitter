@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky bg-white border-bottom shadow-sm" data-bsb-sticky-target="#header">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <img src="<%= asset_path('logo.svg') %>" class="bsb-tpl-logo" alt="BillSplitter Logo" style="width: 150px;"> 
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if current_page?(root_path) %>" href="<%= root_path %>">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if current_page?(users_path) %>" href="<%= users_path %>">
+              <i class="bi bi-people"></i> Users
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if current_page?(groups_path) %>" href="<%= groups_path %>">
+              <i class="bi bi-collection"></i> Groups
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if current_page?(expenses_path) %>" href="<%= expenses_path %>">
+              <i class="bi bi-wallet2"></i> Expenses
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if current_page?(settlements_path) %>" href="<%= settlements_path %>">
+              <i class="bi bi-cash-coin"></i> Settlements
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-1" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle fs-5"></i> Admin
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm p-2" aria-labelledby="adminDropdown">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2 rounded" href="<%= edit_user_registration_path %>">
+                  <i class="bi bi-person-fill text-primary"></i> Profile
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete}, class: "dropdown-item d-flex align-items-center gap-2 py-2 rounded text-danger" do %>
+                  <i class="bi bi-box-arrow-right"></i> Sign out
+                <% end %>
+              </li>
+            </ul>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav> 

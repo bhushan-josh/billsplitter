@@ -1,9 +1,14 @@
-<h1><%= @users.first_name %> <%= @users.last_name %></h1>
+<div class="container mt-4">
+  <div class="card shadow-sm p-4">
+    <h1 class="mb-3"><%= @users.first_name.camelize %> <%= @users.last_name.camelize %></h1>
 
-<p><strong>Phone Number:</strong> <%= @users.phone %></p>
-<p><strong>Email Address:</strong> <%= @users.email %></p>
-<div>
-  <%= link_to "Edit", edit_user_path(@users), class: "btn btn-edit" %>
-  <%= link_to 'Back', users_path, class: "btn btn-back" %>
-</div>
+    <p><strong>Phone Number:</strong> <%= @users.phone.camelize %></p>
+    <p><strong>Email Address:</strong> <%= @users.email %></p>
+    <p><strong>Role:</strong> <%= @users.role.camelize %></p>
 
+    <div class="mt-3">
+      <%# <%= link_to "Edit", edit_user_path(@users), class: "btn btn-primary me-2 rounded-pill" %>
+      <%= link_to "Back", users_path, class: "btn btn-secondary rounded-pill" %>
+    </div>
+  </div>
+  

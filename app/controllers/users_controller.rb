@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  load_and_authorize_resource
   def index
-    @users = User.all
+    @users = if params[:search].present?
+               User.where('first_name LIKE ? OR last_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+             else
+               User.all
+             end
   end
 
   def new

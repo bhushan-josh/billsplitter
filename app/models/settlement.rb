@@ -2,8 +2,8 @@
 
 class Settlement < ApplicationRecord
   # assosiations
-  belongs_to :payer, class_name: 'User'
-  belongs_to :payee, class_name: 'User'
+  belongs_to :payer, class_name: 'User', optional: true
+  belongs_to :payee, class_name: 'User', optional: true
 
   # validation
   validates :payer, presence: true

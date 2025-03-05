@@ -1,9 +1,21 @@
-<h1><%= @groups.first_name %> <%= @groups.last_name %></h1>
+<div class="container mt-4">
+  <div class="card shadow-sm p-4">
+    <h1 class="mb-3"><%= @group.name.camelize %></h1>
+    <p><strong>Description:</strong> <%= @group.description.presence || "No description available" %></p>
+    <p><strong>Created by:</strong> <%= @group.creator&.first_name&.camelize %> <%= @group.creator&.last_name&.camelize %></p>
 
-<p><strong>Phone Number:</strong> <%= @groups.phone %></p>
-<p><strong>Email Address:</strong> <%= @groups.email %></p>
-<div>
-  <%= link_to "Edit", edit_group_path(@groups), class: "btn btn-edit" %>
-  <%= link_to 'Back', groups_path, class: "btn btn-back" %>
+    <h4 class="mt-4">Group Members</h4>
+    <ul class="list-group mb-3">
+      <% @group.group_members.each do |group_member| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span><%= group_member.member.first_name.camelize %> <%= group_member.member.last_name.camelize %></span>
+          <span class="badge bg-primary rounded-pill"><%= group_member.member.email %></span>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="mt-3">
+      <%= link_to "Back to Groups", groups_path, class: "btn btn-secondary rounded-pill" %>
+    </div>
+  </div>
 </div>
-
