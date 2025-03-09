@@ -19,8 +19,8 @@ module V1
 
       def validate_expense
         @expense = Expense.find(show_params[:id])
-        return true if expense
-
+        true if expense
+      rescue ActiveRecord::RecordNotFound
         @message = I18n.t('message.show.invalid', item: 'Expense')
         false
       end

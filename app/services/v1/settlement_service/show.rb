@@ -19,8 +19,8 @@ module V1
 
       def validate_settlement
         @settlement = Settlement.find(show_params[:id])
-        return true if settlement
-
+        true if settlement
+      rescue ActiveRecord::RecordNotFound
         @message = I18n.t('message.show.invalid', item: 'Settlement')
         false
       end

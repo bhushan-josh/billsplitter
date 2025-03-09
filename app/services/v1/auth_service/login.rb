@@ -11,6 +11,7 @@ module V1
       end
 
       def call
+        # debugger
         return failure_response(message) unless validate_user
         return failure_response(message) unless authenticate_user
 

@@ -11,5 +11,5 @@ class Expense < ApplicationRecord
   # validation
   validates :payer, presence: true
   validates :group, presence: true
-  validates :amount, presence: true
+  validates :amount, presence: true, numericality: { greater_than: 0 }
 end

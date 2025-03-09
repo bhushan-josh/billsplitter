@@ -19,8 +19,8 @@ module V1
 
       def validate_user
         @user = User.find(show_params[:id])
-        return true if user
-
+        true if user
+      rescue ActiveRecord::RecordNotFound
         @message = I18n.t('message.show.invalid', item: 'User')
         false
       end

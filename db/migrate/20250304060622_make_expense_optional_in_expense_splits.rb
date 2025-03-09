@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MakeExpenseOptionalInExpenseSplits < ActiveRecord::Migration[7.2]
   def change
     change_column_null :expense_splits, :expense_id, true

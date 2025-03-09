@@ -44,11 +44,6 @@ gem 'i18n', '~> 1.14', '>= 1.14.7'
 # JWT gem is used to securely exchange information between parties, and for user authentication and authorization
 gem 'jwt'
 
-# Automatically generate API documentation from RSpec
-gem 'rspec_api_documentation', '~> 6.1'
-
-gem 'rspec-rails'
-
 # Configure and use JavaScript bundlers in Rails applications
 gem 'jsbundling-rails', '~> 1.3'
 
@@ -65,6 +60,10 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'bootsnap', require: false
 
 gem 'rack-cors'
+
+gem 'rspec_api_documentation', '~> 6.1.0'
+
+gem 'apitome'
 
 gem 'active_model_serializers'
 
@@ -88,6 +87,20 @@ group :development, :test do
 
   # SimpleCov is a code coverage analysis tool for Ruby
   gem 'simplecov', require: false, group: :test
+
+  # RSpec is a testing tool for Ruby
+  gem 'rspec-rails'
+
+  # Database Cleaner helps to ensure a clean state for testing
+  gem 'database_cleaner'
+
+  # Factory Bot is a fixtures replacement with a straightforward definition syntax
+  gem 'factory_bot_rails'
+
+  # Automatically generate API documentation from RSpec
+
+  # Faker is a library for generating fake data
+  gem 'faker'
 end
 
 group :development do
@@ -102,4 +115,7 @@ group :test do
 
   # Use to automate web-based tasks, including testing web applications
   gem 'selenium-webdriver'
+
+  # Use to test web applications by simulating how a user would interact with them
+  gem 'shoulda-matchers', '~> 5.0'
 end

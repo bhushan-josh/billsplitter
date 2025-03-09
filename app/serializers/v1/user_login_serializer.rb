@@ -2,17 +2,17 @@
 
 module V1
   class UserLoginSerializer < ActiveModel::Serializer
-    attributes :id, :first_name, :last_name, :phone, :email, :token, :full_name
+    attributes :id, :first_name, :last_name, :phone, :email, :token
 
     def token
       JwtService.encode({ id: object.id })
     rescue StandardError => e
       Rails.logger.error("JWT Encoding Failed: #{e.message}")
-      'Invalid token'
+      'Invalid'
     end
 
-    def full_name
-      "#{object.first_name} #{object.last_name}"
-    end
+    # def full_name
+    #   "#{object.first_name} #{object.last_name}"
+    # end
   end
 end

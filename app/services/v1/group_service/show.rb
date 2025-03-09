@@ -19,8 +19,8 @@ module V1
 
       def validate_group
         @group = Group.find(show_params[:id])
-        return true if group
-
+        true if group
+      rescue ActiveRecord::RecordNotFound
         @message = I18n.t('message.show.invalid', item: 'Group')
         false
       end
