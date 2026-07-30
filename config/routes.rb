@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers:{registrations:'users/registrations'}
-  
+  devise_for :users, controllers:{registrations:'users/registrations'}, skip: [:registrations, :sessions]
+
   api_version(
     :module => "V1",
     :header => {
@@ -11,11 +11,8 @@ Rails.application.routes.draw do
     post "/login", to: "auth#login"
     post "/signup", to: "auth#signup"
 
-    resources :users
-    resources :groups
-    resources :expenses
+    resources :users, only: [:index, :show, :create, :update, :destroy]
+    resources :groups, only: [:index, :show, :create, :update, :destroy]
+    resources :expenses, only: [:index, :show, :create, :update, :destroy]
   end
-
-  root to: "home#index"
-  resources :users
 end
